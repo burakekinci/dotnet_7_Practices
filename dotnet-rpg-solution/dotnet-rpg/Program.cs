@@ -1,4 +1,4 @@
-global using dotnet_rpg.models;
+global using dotnet_rpg.Models;
 global using dotnet_rpg.Services.CharacterService.Abstract;
 global using dotnet_rpg.Services.CharacterService.Concrete;
 

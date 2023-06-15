@@ -13,25 +13,29 @@ namespace dotnet_rpg.Services.CharacterService.Concrete
             new Character { Name = "Sam", Id=1}
         };
 
-        public List<Character> AddCharacter(Character newCharacter)
+        public async Task<ServiceResponse<List<Character>>> AddCharacter(Character newCharacter)
         {
+            var serviceResponse = new ServiceResponse<List<Character>>();
             characters.Add(newCharacter);
-            return (characters);
+            serviceResponse.Data = characters;
+            return (serviceResponse);
         }
 
-        public List<Character> GetAllCharacters()
+        public async Task<ServiceResponse<List<Character>>> GetAllCharacters()
         {
-            return characters;
+            var serviceResponse = new ServiceResponse<List<Character>>();
+            serviceResponse.Data = characters;
+            return serviceResponse;
         }
 
-        public Character GetCharacterById(int id)
+        public async Task<ServiceResponse<Character>> GetCharacterById(int id)
         {
+            ServiceResponse<Character> serviceResponse = new ServiceResponse<Character>();
             var character = characters.FirstOrDefault(c => c.Id == id);
-            if (character is not null)
-            {
-                return character;
-            }
-            throw new Exception("Character not found");
+
+            serviceResponse.Data = character;
+            return serviceResponse;
+
         }
     }
 }
