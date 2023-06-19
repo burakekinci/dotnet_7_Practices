@@ -2,6 +2,8 @@ global using dotnet_rpg.Models;
 global using dotnet_rpg.Services.CharacterService.Abstract;
 global using dotnet_rpg.Services.CharacterService.Concrete;
 global using dotnet_rpg.Dtos.Character;
+global using Microsoft.EntityFrameworkCore;
+global using dotnet_rpg.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,11 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 //kendi oluşturuduğumuz servisleri buildera tanıtmamız lazım
 builder.Services.AddScoped<ICharacterService, CharacterService>();
+
+//Dbcontexti ekliyoruz
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 var app = builder.Build();
 
