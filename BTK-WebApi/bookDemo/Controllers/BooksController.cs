@@ -46,7 +46,7 @@ namespace bookDemo.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("{id:int}")]
         public IActionResult UpdateBook([FromRoute(Name = "id")] int id, [FromBody] Book book)
         {
             var entity = ApplicationContext

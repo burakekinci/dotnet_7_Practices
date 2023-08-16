@@ -11,8 +11,8 @@ namespace bookDemo.Data
             Books = new List<Book>()
             {
                 new Book(){ Id=1, Title="Beyaz Zambak Ülkesinde", Price=100},
-                new Book(){ Id=1, Title="Keloğlan Masalları", Price=120},
-                new Book(){ Id=1, Title="Şahmat", Price=80},
+                new Book(){ Id=2, Title="Keloğlan Masalları", Price=120},
+                new Book(){ Id=3, Title="Şahmat", Price=80},
             };
         }
     }
