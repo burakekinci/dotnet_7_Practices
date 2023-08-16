@@ -1,4 +1,5 @@
 ﻿using bookDemo.Data;
+using bookDemo.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bookDemo.Controllers
@@ -15,7 +16,7 @@ namespace bookDemo.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult GetBook(int id)
+        public IActionResult GetBook([FromRoute(Name = "id")] int id)
         {
             var book = ApplicationContext
                 .Books
@@ -26,6 +27,22 @@ namespace bookDemo.Controllers
                 return NotFound();
 
             return Ok(book);
+        }
+
+        [HttpPost]
+        public IActionResult CreateBook([FromBody] Book book)
+        {
+            try
+            {
+                if (book is null)
+                    return BadRequest();
+                ApplicationContext.Books.Add(book);
+                return StatusCode(201, book);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
     }
