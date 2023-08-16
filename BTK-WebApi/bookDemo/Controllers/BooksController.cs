@@ -45,5 +45,47 @@ namespace bookDemo.Controllers
             }
         }
 
+        [HttpPut]
+        public IActionResult UpdateBook([FromRoute(Name = "id")] int id, [FromBody] Book book)
+        {
+            var entity = ApplicationContext
+                .Books
+                .Find(b => b.Id.Equals(id));
+            if (entity is null)
+                return NotFound();
+
+            book.Id = entity.Id;
+            ApplicationContext.Books.Remove(entity);
+            ApplicationContext.Books.Add(book);
+            return Ok(book);
+        }
+
+
+        [HttpDelete]
+        public IActionResult DeleteAllBooks()
+        {
+            ApplicationContext.Books.Clear();
+            return NoContent();
+        }
+
+
+        [HttpDelete("{id:int}")]
+        public IActionResult DeleteBook([FromRoute(Name = "id")] int id)
+        {
+            var entity = ApplicationContext
+                .Books
+                .Find(b => b.Id.Equals(id));
+
+            if (entity is null)
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = $"Book with id:{id} could not found!"
+                });
+
+            ApplicationContext.Books.Remove(entity);
+            return NoContent(); //returns 204
+
+        }
     }
 }
