@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Models.Repositories.Config;
 
 namespace WebApi.Models.Repositories

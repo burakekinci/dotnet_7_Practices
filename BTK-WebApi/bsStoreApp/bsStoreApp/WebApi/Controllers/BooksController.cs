@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebApi.Models;
+﻿using Entities.Models;
+using Microsoft.AspNetCore.Mvc;
 using WebApi.Models.Repositories;
 
 namespace WebApi.Controllers
