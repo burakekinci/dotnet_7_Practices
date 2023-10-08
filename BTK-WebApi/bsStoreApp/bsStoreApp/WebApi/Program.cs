@@ -1,5 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using Repositories.EFCore;
+using WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,9 +10,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Database servisinin eklenmesi
-builder.Services.AddDbContext<RepositoryContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"))
-);
+//ConfigureSqlContext bizim oluþturduðumuz bir extension method, method tanýmýndaki this aslýnda buradaki builder.services
+builder.Services.ConfigureSqlContext(builder.Configuration);
+
+builder.Services.ConfigureRepositoryManager();
 
 var app = builder.Build();
 

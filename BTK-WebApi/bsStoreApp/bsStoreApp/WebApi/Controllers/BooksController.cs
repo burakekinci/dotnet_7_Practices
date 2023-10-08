@@ -1,6 +1,7 @@
 ﻿using Entities.Models;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Repositories.EFCore;
+using Repositories.Contracts;
 
 namespace WebApi.Controllers
 {
@@ -9,11 +10,11 @@ namespace WebApi.Controllers
     public class BooksController : ControllerBase
     {
         //Dependency Injection ile Repository Contexti ekliyoruz
-        private readonly RepositoryContext _repositoryContext;
+        private readonly IRepositoryManager _manager;
 
-        public BooksController(RepositoryContext repositoryContext)
+        public BooksController(IRepositoryManager manager)
         {
-            _repositoryContext = repositoryContext;
+            _manager = manager;
         }
 
         [HttpGet]
@@ -21,7 +22,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var books = _repositoryContext.Books.ToList();
+                var books = _manager.Book.GetAllBooks(false);
                 return Ok(books);
             }
             catch (Exception ex)
@@ -35,7 +36,9 @@ namespace WebApi.Controllers
         {
             try
             {
-                var book = _repositoryContext.Books.Where(b => b.Id.Equals(id)).FirstOrDefault();
+                var book = _manager
+                    .Book
+                    .GetOneBookById(id, false);
 
                 if (book is null)
                     return NotFound();
@@ -57,8 +60,9 @@ namespace WebApi.Controllers
                 if (book is null)
                     return BadRequest();
 
-                _repositoryContext.Books.Add(book);
-                _repositoryContext.SaveChanges();
+                _manager.Book.CreateOneBook(book);
+                _manager.Save();
+
                 return StatusCode(201, book);
 
             }
@@ -75,7 +79,8 @@ namespace WebApi.Controllers
             try
             {
                 //Check book?
-                var entity = _repositoryContext.Books.Where(b => b.Id.Equals(id)).FirstOrDefault();
+                //Update methodunda getbook yaparken trackChanges için izlemek istiyoruz, çünkü entityde değişiklikler yapacağız.
+                var entity = _manager.Book.GetOneBookById(id, true);
 
                 if (entity is null)
                     return NotFound();
@@ -84,14 +89,14 @@ namespace WebApi.Controllers
                 if (id != book.Id)
                     return BadRequest();
 
-                _repositoryContext.Books.Remove(entity);
+                //_repositoryContext.Books.Remove(entity);
 
                 //Where ile entity'i aradığımız için entity ef core tarafından track ediliyor 
                 //bu sebeple herhangi bir id kontrolü yapmamıza gerek kalmıyor.
                 entity.Title = book.Title;
                 entity.Price = book.Price;
 
-                _repositoryContext.SaveChanges();
+                _manager.Save();
                 return Ok();
             }
             catch (Exception ex)
@@ -107,7 +112,8 @@ namespace WebApi.Controllers
         {
             try
             {
-                var entity = _repositoryContext.Books.Where(b => b.Id.Equals(id)).FirstOrDefault();
+                var entity = _manager.Book.GetOneBookById(id, false);
+
                 if (entity is null)
                     return NotFound(new
                     {
@@ -115,10 +121,35 @@ namespace WebApi.Controllers
                         message = $"Book with id:{id} not found!"
                     });
 
-                _repositoryContext.Books.Remove(entity);
-                _repositoryContext.SaveChanges();
+                _manager.Book.DeleteOneBook(entity);
+                _manager.Save();
 
-                return NoContent();
+                return NoContent(); //204
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpPatch("{id:int}")]
+        public IActionResult PartiallyUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<Book> bookPatch)
+        {
+            try
+            {
+                //Check Entity
+                var entity = _manager
+                    .Book
+                    .GetOneBookById(id, true);
+
+                if (entity is null)
+                    return NotFound(); //404
+
+                bookPatch.ApplyTo(entity);
+                _manager.Book.UpdateOneBook(entity);
+                _manager.Save();
+
+                return NoContent(); //204
             }
             catch (Exception ex)
             {

@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repositories.EFCore
 {
@@ -21,9 +16,9 @@ namespace Repositories.EFCore
 
         //SaveChanges işlemi managerda yapılacağından burada belirtmiyoruz.
         public void Create(T entity) => _context.Set<T>().Add(entity);
-  
+
         public void Update(T entity) => _context.Set<T>().Update(entity);
-  
+
         public void Delete(T entity) => _context.Set<T>().Remove(entity);
 
 
@@ -36,7 +31,7 @@ namespace Repositories.EFCore
             !trackChanges ?
             _context.Set<T>().Where(expression).AsNoTracking() :
             _context.Set<T>().Where(expression);
-        
+
 
     }
 }
