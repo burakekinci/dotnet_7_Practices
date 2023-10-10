@@ -1,7 +1,7 @@
 ﻿using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Repositories.Contracts;
+using Services.Contracts;
 
 namespace WebApi.Controllers
 {
@@ -10,9 +10,9 @@ namespace WebApi.Controllers
     public class BooksController : ControllerBase
     {
         //Dependency Injection ile Repository Contexti ekliyoruz
-        private readonly IRepositoryManager _manager;
+        private readonly IServiceManager _manager;
 
-        public BooksController(IRepositoryManager manager)
+        public BooksController(IServiceManager manager)
         {
             _manager = manager;
         }
@@ -22,7 +22,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var books = _manager.Book.GetAllBooks(false);
+                var books = _manager.BookService.GetAllBooks(false);
                 return Ok(books);
             }
             catch (Exception ex)
@@ -37,7 +37,7 @@ namespace WebApi.Controllers
             try
             {
                 var book = _manager
-                    .Book
+                    .BookService
                     .GetOneBookById(id, false);
 
                 if (book is null)
@@ -60,8 +60,7 @@ namespace WebApi.Controllers
                 if (book is null)
                     return BadRequest();
 
-                _manager.Book.CreateOneBook(book);
-                _manager.Save();
+                _manager.BookService.CreateOneBook(book);
 
                 return StatusCode(201, book);
 
@@ -72,32 +71,38 @@ namespace WebApi.Controllers
             }
         }
 
-
         [HttpPut("{id:int}")]
         public IActionResult UpdateBook([FromRoute(Name = "id")] int id, [FromBody] Book book)
         {
             try
             {
+                if (book is null)
+                    return BadRequest();
+
+                _manager.BookService.UpdateOneBook(id, book, true);
+
+                return NoContent(); //204
+
                 //Check book?
                 //Update methodunda getbook yaparken trackChanges için izlemek istiyoruz, çünkü entityde değişiklikler yapacağız.
-                var entity = _manager.Book.GetOneBookById(id, true);
+                //var entity = _manager.BookService.GetOneBookById(id, true);
 
-                if (entity is null)
-                    return NotFound();
+                //if (entity is null)
+                //    return NotFound();
 
-                //Check id?
-                if (id != book.Id)
-                    return BadRequest();
+                ////Check id?
+                //if (id != book.Id)
+                //    return BadRequest();
 
                 //_repositoryContext.Books.Remove(entity);
 
                 //Where ile entity'i aradığımız için entity ef core tarafından track ediliyor 
                 //bu sebeple herhangi bir id kontrolü yapmamıza gerek kalmıyor.
-                entity.Title = book.Title;
-                entity.Price = book.Price;
+                //entity.Title = book.Title;
+                //entity.Price = book.Price;
 
-                _manager.Save();
-                return Ok();
+                //_manager.Save();
+                //return Ok();
             }
             catch (Exception ex)
             {
@@ -105,25 +110,12 @@ namespace WebApi.Controllers
             }
         }
 
-
-
         [HttpDelete("{id:int}")]
         public IActionResult DeleteOneBook([FromRoute(Name = "id")] int id)
         {
             try
             {
-                var entity = _manager.Book.GetOneBookById(id, false);
-
-                if (entity is null)
-                    return NotFound(new
-                    {
-                        statusCode = 404,
-                        message = $"Book with id:{id} not found!"
-                    });
-
-                _manager.Book.DeleteOneBook(entity);
-                _manager.Save();
-
+                _manager.BookService.DeleteOneBook(id, false);
                 return NoContent(); //204
             }
             catch (Exception ex)
@@ -139,15 +131,15 @@ namespace WebApi.Controllers
             {
                 //Check Entity
                 var entity = _manager
-                    .Book
+                    .BookService
                     .GetOneBookById(id, true);
 
                 if (entity is null)
                     return NotFound(); //404
 
                 bookPatch.ApplyTo(entity);
-                _manager.Book.UpdateOneBook(entity);
-                _manager.Save();
+                _manager.BookService.UpdateOneBook(id, entity, true);
+
 
                 return NoContent(); //204
             }

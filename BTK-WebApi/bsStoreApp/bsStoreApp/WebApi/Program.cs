@@ -11,9 +11,10 @@ builder.Services.AddSwaggerGen();
 
 //Database servisinin eklenmesi
 //ConfigureSqlContext bizim oluþturduðumuz bir extension method, method tanýmýndaki this aslýnda buradaki builder.services
+//Bizim yazdýðýmýz extensionsService'lar
 builder.Services.ConfigureSqlContext(builder.Configuration);
-
 builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureServiceManager();
 
 var app = builder.Build();
 
