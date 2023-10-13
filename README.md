@@ -1,4 +1,7 @@
-# dotnet_7_Practices
+# .NET-7 Pratikleri
+
+ASP.NET Core ile pratik amacıyla yapmış olduğum projeleri içeren bir repository'dir. 
 
 BTK-WebApi klasörü BTK Akademi üzerinden takip edilen içeriklerin bulunduğu klasördür.
-- Klasör içerisinde bulunanların her klasör birer ayrı Solutionları içermektedir.
+- Klasör içerisinde bulunan her bir klasör kendilerine ait Visual Studio Solutionları içermektedir.
+
