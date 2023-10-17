@@ -1,6 +1,11 @@
+using NLog;
 using WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+//Nlog file konfigirasyonu
+LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
 // Add services to the container.
 //Controller'larý biz ayrý bir katmana aldýk, bu katmanda presentation class projesi, onu program.cs'e dahil edebilmek için AddApplicationPart dememiz gerekiyor
@@ -19,6 +24,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
+builder.Services.ConfigureLoggerService();
+
 
 var app = builder.Build();
 
