@@ -33,14 +33,9 @@ namespace Presentation.Controllers
         [HttpGet("{id:int}")]
         public IActionResult GetBookById([FromRoute(Name = "id")] int id)
         {
-
-            throw new Exception("!!!");
             var book = _manager
                 .BookService
                 .GetOneBookById(id, false);
-
-            if (book is null)
-                return NotFound();
 
             return Ok(book);
 
@@ -86,9 +81,6 @@ namespace Presentation.Controllers
             var entity = _manager
                 .BookService
                 .GetOneBookById(id, true);
-
-            if (entity is null)
-                return NotFound(); //404
 
             bookPatch.ApplyTo(entity);
             _manager.BookService.UpdateOneBook(id, entity, true);
