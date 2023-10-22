@@ -31,7 +31,7 @@ namespace Services
 
             if (entity is null)
             {
-                string message = $"The book with id:{id} could not found."
+                string message = $"The book with id:{id} could not found.";
                 _logger.LogInfo(message);
                 throw new Exception(message);
             }

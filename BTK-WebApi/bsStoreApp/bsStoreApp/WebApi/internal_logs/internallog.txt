@@ -1,0 +1,95 @@
+2023-10-23 00:07:23.6836 Warn Error has been raised. Exception: NLog.NLogConfigurationException: 'FileTarget' cannot assign unknown property 'naem'='logfile'
+   at NLog.Config.LoggingConfigurationParser.SetPropertyValueFromString[T](T targetObject, String propertyName, String propertyValue, ValidatedConfigurationElement element)
+2023-10-23 00:07:23.7269 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create LayoutRenderer with unknown type-alias: 'message]' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+2023-10-23 00:07:23.7269 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'FileTarget([unnamed])' has invalid config. Error: target.Name cannot be empty (Parameter 'target')
+ ---> System.ArgumentException: target.Name cannot be empty (Parameter 'target')
+   at NLog.Config.LoggingConfiguration.AddTarget(Target target)
+   at NLog.Config.LoggingConfigurationParser.AddNewTargetFromConfig(String targetTypeName, ValidatedConfigurationElement targetElement, Boolean asyncWrap, Dictionary`2 typeNameToDefaultTargetParameters, ValidatedConfigurationElement defaultWrapperElement)
+   --- End of inner exception stack trace ---
+2023-10-23 00:07:23.7269 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'logfile' not found for logging rule: *.
+2023-10-23 00:07:23.7426 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 00:07:23.7426 Info Validating config: Targets=0, ConfigItems=1, FilePath=C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:07:23.7515 Info Configuration initialized.
+2023-10-23 00:09:06.3689 Warn Error has been raised. Exception: NLog.NLogConfigurationException: 'FileTarget' cannot assign unknown property 'naem'='logfile'
+   at NLog.Config.LoggingConfigurationParser.SetPropertyValueFromString[T](T targetObject, String propertyName, String propertyValue, ValidatedConfigurationElement element)
+2023-10-23 00:09:06.3835 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create LayoutRenderer with unknown type-alias: 'message]' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+2023-10-23 00:09:06.3835 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'FileTarget([unnamed])' has invalid config. Error: target.Name cannot be empty (Parameter 'target')
+ ---> System.ArgumentException: target.Name cannot be empty (Parameter 'target')
+   at NLog.Config.LoggingConfiguration.AddTarget(Target target)
+   at NLog.Config.LoggingConfigurationParser.AddNewTargetFromConfig(String targetTypeName, ValidatedConfigurationElement targetElement, Boolean asyncWrap, Dictionary`2 typeNameToDefaultTargetParameters, ValidatedConfigurationElement defaultWrapperElement)
+   --- End of inner exception stack trace ---
+2023-10-23 00:09:06.3929 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'logfile' not found for logging rule: *.
+2023-10-23 00:09:06.3929 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 00:09:06.4160 Info Validating config: Targets=0, ConfigItems=1, FilePath=C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:09:06.4160 Info Configuration initialized.
+2023-10-23 00:10:01.8277 Warn Error has been raised. Exception: NLog.NLogConfigurationException: 'FileTarget' cannot assign unknown property 'naem'='logfile'
+   at NLog.Config.LoggingConfigurationParser.SetPropertyValueFromString[T](T targetObject, String propertyName, String propertyValue, ValidatedConfigurationElement element)
+2023-10-23 00:10:01.8438 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create LayoutRenderer with unknown type-alias: 'message]' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+2023-10-23 00:10:01.8469 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'FileTarget([unnamed])' has invalid config. Error: target.Name cannot be empty (Parameter 'target')
+ ---> System.ArgumentException: target.Name cannot be empty (Parameter 'target')
+   at NLog.Config.LoggingConfiguration.AddTarget(Target target)
+   at NLog.Config.LoggingConfigurationParser.AddNewTargetFromConfig(String targetTypeName, ValidatedConfigurationElement targetElement, Boolean asyncWrap, Dictionary`2 typeNameToDefaultTargetParameters, ValidatedConfigurationElement defaultWrapperElement)
+   --- End of inner exception stack trace ---
+2023-10-23 00:10:01.8469 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'logfile' not found for logging rule: *.
+2023-10-23 00:10:01.8469 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 00:10:01.8668 Info Validating config: Targets=0, ConfigItems=1, FilePath=C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:10:01.8668 Info Configuration initialized.
+2023-10-23 00:19:21.7098 Warn Error has been raised. Exception: NLog.NLogConfigurationException: 'FileTarget' cannot assign unknown property 'naem'='logfile'
+   at NLog.Config.LoggingConfigurationParser.SetPropertyValueFromString[T](T targetObject, String propertyName, String propertyValue, ValidatedConfigurationElement element)
+2023-10-23 00:19:21.7247 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create LayoutRenderer with unknown type-alias: 'message]' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+2023-10-23 00:19:21.7247 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'FileTarget([unnamed])' has invalid config. Error: target.Name cannot be empty (Parameter 'target')
+ ---> System.ArgumentException: target.Name cannot be empty (Parameter 'target')
+   at NLog.Config.LoggingConfiguration.AddTarget(Target target)
+   at NLog.Config.LoggingConfigurationParser.AddNewTargetFromConfig(String targetTypeName, ValidatedConfigurationElement targetElement, Boolean asyncWrap, Dictionary`2 typeNameToDefaultTargetParameters, ValidatedConfigurationElement defaultWrapperElement)
+   --- End of inner exception stack trace ---
+2023-10-23 00:19:21.7247 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'logfile' not found for logging rule: *.
+2023-10-23 00:19:21.7398 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 00:19:21.7398 Info Validating config: Targets=0, ConfigItems=1, FilePath=C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:19:21.7398 Info Configuration initialized.
+2023-10-23 00:22:51.3113 Info Configuration file change detected! Reloading in 1000ms...
+2023-10-23 00:22:52.3204 Info Reloading configuration...
+2023-10-23 00:22:52.3204 Info Loading NLog config from XML file: C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:22:52.3204 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create LayoutRenderer with unknown type-alias: 'message]' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+2023-10-23 00:22:52.3204 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-23 00:22:52.3204 Info Closing old configuration.
+2023-10-23 00:22:52.3328 Info Validating config: TargetNames=logfile, ConfigItems=11, FilePath=C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:22:52.3328 Info Configuration initialized.
+2023-10-23 00:23:17.8985 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create LayoutRenderer with unknown type-alias: 'message]' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+2023-10-23 00:23:17.9095 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-23 00:23:17.9095 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 00:23:17.9269 Info Validating config: TargetNames=logfile, ConfigItems=11, FilePath=C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:23:17.9269 Info Configuration initialized.
+2023-10-23 00:25:00.3269 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create LayoutRenderer with unknown type-alias: 'message]' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+2023-10-23 00:25:00.3521 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-23 00:25:00.3657 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 00:25:00.3657 Info Validating config: TargetNames=logfile, ConfigItems=11, FilePath=C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:25:00.3879 Info Configuration initialized.
+2023-10-23 00:35:04.7255 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-23 00:35:04.7255 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 00:35:04.7419 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:35:04.7521 Info Configuration initialized.
+2023-10-23 00:38:29.9618 Info Configuration file change detected! Reloading in 1000ms...
+2023-10-23 00:38:30.9736 Info Reloading configuration...
+2023-10-23 00:38:30.9736 Info Loading NLog config from XML file: C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:38:30.9736 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-23 00:38:30.9736 Info Closing old configuration.
+2023-10-23 00:38:30.9900 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:38:30.9900 Info Configuration initialized.
+2023-10-23 00:38:38.0261 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-23 00:38:38.0338 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 00:38:38.0338 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Çalışmalarım\BTKakademi\dotnet_7_Practices\BTK-WebApi\bsStoreApp\bsStoreApp\WebApi\nlog.config
+2023-10-23 00:38:38.0531 Info Configuration initialized.

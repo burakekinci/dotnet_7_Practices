@@ -1,4 +1,5 @@
 using NLog;
+using Services.Contracts;
 using WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,11 +30,22 @@ builder.Services.ConfigureLoggerService();
 
 var app = builder.Build();
 
+//ILoggerService bizim kendi yazdýðýmýz servis
+//ExceptionHandler için bir app'e ihtiyacýmýz var o yüzden app build edildikten
+//sonra configure ediyoruz
+var logger = app.Services.GetRequiredService<ILoggerService>();
+app.ConfigureExceptionHandler(logger);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+if (app.Environment.IsProduction())
+{
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
