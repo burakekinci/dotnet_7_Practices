@@ -27,6 +27,9 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
 
+//AutoMapper run time'da hazýrlanan bir yapý, reflection istiyor o yüzden böyle typeOf ile bu sýnýfý veriyoruz
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 var app = builder.Build();
 
