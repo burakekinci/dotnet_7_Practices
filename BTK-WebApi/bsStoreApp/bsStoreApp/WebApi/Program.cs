@@ -11,7 +11,17 @@ LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nl
 // Add services to the container.
 //Controller'larý biz ayrý bir katmana aldýk, bu katmanda presentation class projesi, onu program.cs'e dahil edebilmek için AddApplicationPart dememiz gerekiyor
 builder.Services
-    .AddControllers()
+    .AddControllers(config =>
+    {
+        //Content Negatiation-Ýçerik Pazarlýðýný açar. (Xml,Csv formatýnda dönüþler için)
+        config.RespectBrowserAcceptHeader = true;
+        config.ReturnHttpNotAcceptable = true;
+        /*Pazarlýða açýðýz tamam ama request'ten gelen format isteðini reddetebiliriz
+        *yani diyelim ki request "test/csv" istedi, fakat biz bu format'ý kabul etmiyorsak
+        *HttpNotAcceptable=true" olduðundan controller otomatik 406 not acceptable döner
+        *Pazarlýða açýk mýyýz evet, duruma göre not acceptable dönebilir miyiz evet
+        */
+    })
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
 
 
