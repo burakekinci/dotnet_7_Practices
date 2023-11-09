@@ -22,6 +22,8 @@ builder.Services
         *Pazarlýða açýk mýyýz evet, duruma göre not acceptable dönebilir miyiz evet
         */
     })
+    .AddCustomCsvFormatter()                    //Bu bizim kendi yazdýðýmýz csv formatter
+    .AddXmlDataContractSerializerFormatters()   //Xml format desteðini ekledik bu method ile
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
 
 
